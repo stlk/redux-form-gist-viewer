@@ -89,7 +89,7 @@ export function isLoaded(globalState) {
 export function load(name) {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get(`https://api.github.com/users/${name}`)
+    promise: (client) => client.get(`https://api.github.com/users/${name}/gists`)
   };
 }
 
