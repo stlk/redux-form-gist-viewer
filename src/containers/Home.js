@@ -1,10 +1,7 @@
 import * as gistsActionCreator from '../redux/modules/gists'
 import * as profileActionCreator from '../redux/modules/profile'
 import { connect } from 'react-redux';
-import React, { Component, PropTypes } from 'react';
-import Layout from '../components/Layout';
-
-
+import React, { Component } from 'react';
 import Profile from '../components/Profile';
 
 class Home extends Component {
@@ -21,7 +18,7 @@ class Home extends Component {
     if (!profile.loaded) return 'Loading...';
 
     return (
-      <Layout>
+      <div>
         <Profile profile={profile.data} />
         <ul>
           {gists.data.map(gist =>
@@ -30,7 +27,7 @@ class Home extends Component {
             </li>,
           )}
         </ul>
-      </Layout>
+      </div>
     )
   }
 }

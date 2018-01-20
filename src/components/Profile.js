@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Profile = styled.div`
@@ -17,5 +17,5 @@ const Profile = styled.div`
 export default ({ profile }) =>
   <Profile>
     <h1>{profile.name || profile.login}</h1>
-    <img src={profile.avatar_url} />
+    <img alt="" src={profile.avatar_url} />
   </Profile>;

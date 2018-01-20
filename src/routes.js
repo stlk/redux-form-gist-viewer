@@ -2,8 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import {
     Home,
-    About,
-    NotFound
+    About
   } from './containers';
 
 export default () => {

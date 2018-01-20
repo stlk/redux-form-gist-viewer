@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import Layout from '../components/Layout';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Profile from '../components/Profile';
@@ -10,12 +9,10 @@ export default class Gist extends Component {
     const { gist } = this.props;
 
     return (
-    <Layout>
       <Profile profile={gist.owner} />
       {Object.keys(gist.files).map(filename =>
         <File filename={filename} gist={gist} />
       )}
-    </Layout>
     )
   }
 }

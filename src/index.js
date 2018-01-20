@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
-import {Provider, connect} from 'react-redux';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+
+import Layout from './components/Layout';
 
 import getRoutes from './routes';
 
@@ -13,7 +15,9 @@ const store = createStore(client);
 ReactDOM.render(
   <Provider store={store} key="provider">
     <Router>
-      {getRoutes()}
+      <Layout>
+        {getRoutes()}
+      </Layout>
     </Router>
   </Provider>,
   document.getElementById('root')
