@@ -13,8 +13,7 @@ class Gist extends Component {
     const { gists, gists: { editing } } = this.props;
 
     const gist = gists.data;
-
-    if (!gists.loaded) return 'Loading...';
+    if (!gists.loaded || !gist) return 'Loading...';
 
     return (
       <div>

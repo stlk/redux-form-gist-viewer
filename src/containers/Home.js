@@ -2,6 +2,7 @@ import * as gistsActionCreator from '../redux/modules/gists';
 import * as profileActionCreator from '../redux/modules/profile';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Profile from '../components/Profile';
 
 class Home extends Component {
@@ -22,9 +23,9 @@ class Home extends Component {
         <ul>
           {gists.list.map(gist => (
             <li key={gist.id}>
-              <a href={`/gist/${gist.id}`}>
+              <Link to={`/gist/${gist.id}`}>
                 {gist.files[Object.keys(gist.files)[0]].filename}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

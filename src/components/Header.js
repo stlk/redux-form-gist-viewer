@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 import Title from './Title';
 
-const Anchor = styled(({ href, className, children }) =>
-  <a href={href} className={className}>{children}</a>
-)`
+const Anchor = styled(({ href, className, children }) => (
+  <Link to={href} className={className}>
+    {children}
+  </Link>
+))`
   margin-right: 15px;
 `;
 
-const Header = styled(({ className }) =>
+const Header = styled(({ className }) => (
   <div className={className}>
     <Title />
     <nav>
@@ -17,7 +21,7 @@ const Header = styled(({ className }) =>
       <Anchor href="/about">About</Anchor>
     </nav>
   </div>
-)`
+))`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
