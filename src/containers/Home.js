@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Profile from '../components/Profile';
 
-class Home extends Component {
+export class Home extends Component {
   componentDidMount() {
     this.props.loadGists('stlk');
     this.props.loadProfile('stlk');
@@ -23,9 +23,7 @@ class Home extends Component {
         <ul>
           {gists.list.map(gist => (
             <li key={gist.id}>
-              <Link to={`/gist/${gist.id}`}>
-                {gist.files[Object.keys(gist.files)[0]].filename}
-              </Link>
+              <Link to={`/gist/${gist.id}`}>{Object.keys(gist.files)[0]}</Link>
             </li>
           ))}
         </ul>

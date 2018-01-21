@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div
+    className="sc-bdVaJa fofobL"
+  >
+    <h1>
+      joe doe
+    </h1>
+    <img
+      alt=""
+      src="some/path"
+    />
+  </div>
+  <ul>
+    <li>
+      <a
+        href="/gist/id"
+        onClick={[Function]}
+      >
+        some.js
+      </a>
+    </li>
+  </ul>
+</div>
+`;
