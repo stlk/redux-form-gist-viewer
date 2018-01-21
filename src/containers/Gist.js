@@ -1,18 +1,49 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import * as gistsActionCreator from 'redux/modules/gists';
+import { connect } from 'react-redux';
 
-import Profile from '../components/Profile';
-import File from '../components/File';
+import { GistForm, Profile, File } from 'components';
 
-export default class Gist extends Component {
+class Gist extends Component {
+  componentDidMount() {
+    this.props.loadGist(this.props.match.params.id);
+  }
+
   render() {
-    const { gist } = this.props;
+    const { gists, gists: { editing } } = this.props;
+
+    const gist = gists.data;
+
+    if (!gists.loaded) return 'Loading...';
 
     return (
-      <Profile profile={gist.owner} />
-      {Object.keys(gist.files).map(filename =>
-        <File filename={filename} gist={gist} />
-      )}
-    )
+      <div>
+        <Profile profile={gist.owner} />
+        <button onClick={() => this.props.editStart(gist.id)}>Edit</button>
+        {editing[gist.id] ? (
+          <GistForm
+            formKey={String(gist.id)}
+            key={String(gist.id)}
+            initialValues={gist}
+          />
+        ) : (
+          <p>{gist.description}</p>
+        )}
+        {Object.keys(gist.files).map(filename => (
+          <File key={filename} filename={filename} gist={gist} />
+        ))}
+      </div>
+    );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    gists: state.gists,
+  };
+}
+
+export default connect(mapStateToProps, {
+  loadGist: gistsActionCreator.loadDetail,
+  editStart: gistsActionCreator.editStart,
+})(Gist);
